@@ -26,10 +26,11 @@ const AddUser = (props) => {
             setValid(false)
             return
         }
-        console.log(name, age, valid)
+        //console.log(name, age, valid)
         setName("")
         setAge("")
         setValid(true)
+        props.onAddUsers({name, age})
         
     }
     
