@@ -1,17 +1,17 @@
-.form {
+.users_form {
     margin: 2rem auto;
     padding: 1rem;
     width: 90%; /* element take up 90% of its parents width i.e. viewport, but not exceed a maximum width of 40 rem units => when size<40 rem then takes up 90%  */
     max-width: 40rem;
   }
   
-  .form label {
+  .users_form label {
     display: block;
     font-weight: bold;
     margin-bottom: 0.5rem;
   }
   
-  .form input {
+  .users_form input {
     font: inherit;
     display: block;
     width: 100%;
@@ -20,7 +20,7 @@
     margin-bottom: 0.5rem;
   }
   
-  .form input:focus {
+  .users_form input:focus {
     outline: none;
     border-color: #4f005f;
   }
