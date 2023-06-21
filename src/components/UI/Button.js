@@ -5,7 +5,7 @@ const Button = (props) => {
     <button
       className={classes.button}
       type={props.type || "button"} /* if props.type has not passed then type will be button */
-      onClick={props.onClick}
+      onClick={props.btnClick} /* this is used by ErrorModal only not by AddUsers */
     >
       {props.children}
     </button>
