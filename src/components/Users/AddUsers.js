@@ -47,7 +47,7 @@ const AddUser = (props) => {
   return (
     <div>
       {error && <ErrorModal title={error.title} messg={error.messg} delError={errorHandler}></ErrorModal> }  {/* when error is not null then only its true and ErrorModal is displayed */}
-      <Card cardClasses={classes.users_form}>
+      <Card cardClass={classes.users_form}>
         <form onSubmit={submitHandler}>
           <label htmlFor="name">name</label>
           <input onChange={nameHandler} id="name" value={name} type="text" />
