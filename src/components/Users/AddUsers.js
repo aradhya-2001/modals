@@ -45,7 +45,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <div>
+    <>
       {error && <ErrorModal title={error.title} messg={error.messg} delError={errorHandler}></ErrorModal> }  {/* when error is not null then only its true and ErrorModal is displayed */}
       <Card cardClass={classes.users_form}>
         <form onSubmit={submitHandler}>
@@ -56,7 +56,7 @@ const AddUser = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-    </div>
+    </>
   );
 };
 

@@ -14,10 +14,10 @@ function App() {
   }
   console.log(users)
   return (
-    <div>
+    <>
     <AddUser onAddUsers={addUsers} />
     {users.length && <UsersList items={users} />}  {/* when users array is empty then UserList is not diaplayed. Otherwise an empty card is displayed when no users is added */}
-    </div>
+    </>
 
   );
 }
