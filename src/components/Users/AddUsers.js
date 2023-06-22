@@ -2,23 +2,23 @@ import classes from "./AddUsers.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const AddUser = (props) => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+
   const [error, setError] = useState();
 
-  const nameHandler = (event) => {
-    setName(event.target.value);
-  };
+  const nameInputRef = useRef() /* this makes the variable nameInputRef to be used as ref to an html element.  */
+  const ageInputRef = useRef()
 
-  const ageHandler = (event) => {
-    setAge(event.target.value);
-  };
-
+  
   const submitHandler = (event) => {
+
     event.preventDefault();
+
+    const name = nameInputRef.current.value
+    const age = nameInputRef.current.value
+    
     if (name.trim().length === 0 || age.trim().length === 0) {
       setError({
         title: "Invalid input",
@@ -26,6 +26,7 @@ const AddUser = (props) => {
       });
       return;
     }
+
     if (+age < 1) { /* js probably would convert string age to number age before comparing to 1 but to be on safe side we have converted explicitly by unary + operator. Can be done by Number() also */
       setError({
         title: "Invalid age",
@@ -34,8 +35,8 @@ const AddUser = (props) => {
       return;
     }
     //console.log(name, age, valid)
-    setName("");
-    setAge("");
+    nameInputRef.current.value = ""  /* this resets the value attribute of input element. Thats why we dont need value attr inside element coz its value is directly changed here */
+    ageInputRef.current.value = ""
     setError();
     props.onAddUsers({ name, age });
   };
@@ -50,9 +51,9 @@ const AddUser = (props) => {
       <Card cardClass={classes.users_form}>
         <form onSubmit={submitHandler}>
           <label htmlFor="name">name</label>
-          <input onChange={nameHandler} id="name" value={name} type="text" />
+          <input id="name" type="text" ref={nameInputRef}/> {/* this ref attribute attaches/connects the DOM node of the element to the variable mentioned i.e. nameInputRef */}
           <label htmlFor="age">Age (Years)</label>
-          <input onChange={ageHandler} id="age" value={age} type="number" />
+          <input id="age" type="number" ref={ageInputRef} />
           <Button type="submit">Add User</Button>
         </form>
       </Card>
